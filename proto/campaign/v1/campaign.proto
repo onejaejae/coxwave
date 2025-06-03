@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto.campaign.v1;
 
-option go_package = "github.com/coxwave/gen/campaign/v1;campaignv1";
+option go_package = "github.com/coxwave/coupon-system/gen/proto/campaign/v1;campaignv1";
 
 import "google/protobuf/timestamp.proto";
 
@@ -31,7 +31,7 @@ message CreateCampaignResponse {
 
 // 캠페인 조회 요청
 message GetCampaignRequest {
-  string campaign_id = 1;                       // 캠페인 ID
+  uint32 campaign_id = 1;                       // 캠페인 ID
 }
 
 // 캠페인 조회 응답

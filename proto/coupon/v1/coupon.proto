@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto.coupon.v1;
 
-option go_package = "github.com/coxwave/gen/coupon/v1;couponv1";
+option go_package = "github.com/coxwave/coupon-system/gen/proto/coupon/v1;couponv1";
 
 import "google/protobuf/timestamp.proto";
 
@@ -11,7 +11,7 @@ import "google/protobuf/timestamp.proto";
 message Coupon {
   uint32 id = 1;                                // 쿠폰 ID (gorm.Model의 ID)
   string code = 2;                              // 쿠폰 코드 (한글+숫자 조합, 10자 이내)
-  string campaign_id = 3;                       // 캠페인 ID
+  uint32 campaign_id = 3;                       // 캠페인 ID
   google.protobuf.Timestamp issued_at = 4;      // 발급 시간
   google.protobuf.Timestamp created_at = 5;     // 생성 시간
   google.protobuf.Timestamp updated_at = 6;     // 수정 시간
@@ -19,7 +19,7 @@ message Coupon {
 
 // 쿠폰 발급 요청
 message IssueCouponRequest {
-  string campaign_id = 1; // 캠페인 ID
+  uint32 campaign_id = 1; // 캠페인 ID
 }
 
 // 쿠폰 발급 응답
