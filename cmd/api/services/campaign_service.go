@@ -26,7 +26,7 @@ func (s *CampaignService) CreateCampaign(ctx context.Context, req *campaignv1.Cr
 		IssueStartAt:   req.IssueStartAt.AsTime(),
 	}
 
-	if err := s.repo.Create(ctx, campaign); err != nil {
+	if err := s.repo.Create(ctx, campaign, nil); err != nil {
 		return nil, err
 	}
 
@@ -43,7 +43,7 @@ func (s *CampaignService) CreateCampaign(ctx context.Context, req *campaignv1.Cr
 }
 
 func (s *CampaignService) GetCampaign(ctx context.Context, req *campaignv1.GetCampaignRequest) (*campaignv1.GetCampaignResponse, error) {
-	campaign, err := s.repo.GetByIDWithCouponCodes(ctx, req.CampaignId)
+	campaign, err := s.repo.GetByIDWithCouponCodes(ctx, req.CampaignId, nil)
 	if err != nil {
 		return nil, err
 	}
