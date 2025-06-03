@@ -25,12 +25,12 @@ const (
 // 쿠폰 정보
 type Coupon struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                  // 쿠폰 ID (gorm.Model의 ID)
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`                               // 쿠폰 코드 (한글+숫자 조합, 10자 이내)
-	CampaignId    string                 `protobuf:"bytes,3,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
-	IssuedAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=issued_at,json=issuedAt,proto3" json:"issued_at,omitempty"`       // 발급 시간
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`    // 생성 시간
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`    // 수정 시간
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                   // 쿠폰 ID (gorm.Model의 ID)
+	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`                                // 쿠폰 코드 (한글+숫자 조합, 10자 이내)
+	CampaignId    uint32                 `protobuf:"varint,3,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
+	IssuedAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=issued_at,json=issuedAt,proto3" json:"issued_at,omitempty"`        // 발급 시간
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`     // 생성 시간
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`     // 수정 시간
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -79,11 +79,11 @@ func (x *Coupon) GetCode() string {
 	return ""
 }
 
-func (x *Coupon) GetCampaignId() string {
+func (x *Coupon) GetCampaignId() uint32 {
 	if x != nil {
 		return x.CampaignId
 	}
-	return ""
+	return 0
 }
 
 func (x *Coupon) GetIssuedAt() *timestamppb.Timestamp {
@@ -110,7 +110,7 @@ func (x *Coupon) GetUpdatedAt() *timestamppb.Timestamp {
 // 쿠폰 발급 요청
 type IssueCouponRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CampaignId    string                 `protobuf:"bytes,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
+	CampaignId    uint32                 `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -145,11 +145,11 @@ func (*IssueCouponRequest) Descriptor() ([]byte, []int) {
 	return file_proto_coupon_v1_coupon_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *IssueCouponRequest) GetCampaignId() string {
+func (x *IssueCouponRequest) GetCampaignId() uint32 {
 	if x != nil {
 		return x.CampaignId
 	}
-	return ""
+	return 0
 }
 
 // 쿠폰 발급 응답
@@ -205,7 +205,7 @@ const file_proto_coupon_v1_coupon_proto_rawDesc = "" +
 	"\x06Coupon\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1f\n" +
-	"\vcampaign_id\x18\x03 \x01(\tR\n" +
+	"\vcampaign_id\x18\x03 \x01(\rR\n" +
 	"campaignId\x127\n" +
 	"\tissued_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\bissuedAt\x129\n" +
 	"\n" +
@@ -213,12 +213,12 @@ const file_proto_coupon_v1_coupon_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"5\n" +
 	"\x12IssueCouponRequest\x12\x1f\n" +
-	"\vcampaign_id\x18\x01 \x01(\tR\n" +
+	"\vcampaign_id\x18\x01 \x01(\rR\n" +
 	"campaignId\"F\n" +
 	"\x13IssueCouponResponse\x12/\n" +
 	"\x06coupon\x18\x01 \x01(\v2\x17.proto.coupon.v1.CouponR\x06coupon2k\n" +
 	"\rCouponService\x12Z\n" +
-	"\vIssueCoupon\x12#.proto.coupon.v1.IssueCouponRequest\x1a$.proto.coupon.v1.IssueCouponResponse\"\x00B+Z)github.com/coxwave/gen/coupon/v1;couponv1b\x06proto3"
+	"\vIssueCoupon\x12#.proto.coupon.v1.IssueCouponRequest\x1a$.proto.coupon.v1.IssueCouponResponse\"\x00B?Z=github.com/coxwave/coupon-system/gen/proto/coupon/v1;couponv1b\x06proto3"
 
 var (
 	file_proto_coupon_v1_coupon_proto_rawDescOnce sync.Once

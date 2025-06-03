@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	v1 "github.com/coxwave/gen/campaign/v1"
+	v1 "github.com/coxwave/coupon-system/gen/proto/campaign/v1"
 	http "net/http"
 	strings "strings"
 )

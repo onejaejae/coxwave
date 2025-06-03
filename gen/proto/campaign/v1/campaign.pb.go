@@ -216,7 +216,7 @@ func (x *CreateCampaignResponse) GetCampaign() *Campaign {
 // 캠페인 조회 요청
 type GetCampaignRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CampaignId    string                 `protobuf:"bytes,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
+	CampaignId    uint32                 `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"` // 캠페인 ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,11 +251,11 @@ func (*GetCampaignRequest) Descriptor() ([]byte, []int) {
 	return file_proto_campaign_v1_campaign_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetCampaignRequest) GetCampaignId() string {
+func (x *GetCampaignRequest) GetCampaignId() uint32 {
 	if x != nil {
 		return x.CampaignId
 	}
-	return ""
+	return 0
 }
 
 // 캠페인 조회 응답
@@ -332,14 +332,14 @@ const file_proto_campaign_v1_campaign_proto_rawDesc = "" +
 	"\x16CreateCampaignResponse\x127\n" +
 	"\bcampaign\x18\x01 \x01(\v2\x1b.proto.campaign.v1.CampaignR\bcampaign\"5\n" +
 	"\x12GetCampaignRequest\x12\x1f\n" +
-	"\vcampaign_id\x18\x01 \x01(\tR\n" +
+	"\vcampaign_id\x18\x01 \x01(\rR\n" +
 	"campaignId\"q\n" +
 	"\x13GetCampaignResponse\x127\n" +
 	"\bcampaign\x18\x01 \x01(\v2\x1b.proto.campaign.v1.CampaignR\bcampaign\x12!\n" +
 	"\fcoupon_codes\x18\x02 \x03(\tR\vcouponCodes2\xda\x01\n" +
 	"\x0fCampaignService\x12g\n" +
 	"\x0eCreateCampaign\x12(.proto.campaign.v1.CreateCampaignRequest\x1a).proto.campaign.v1.CreateCampaignResponse\"\x00\x12^\n" +
-	"\vGetCampaign\x12%.proto.campaign.v1.GetCampaignRequest\x1a&.proto.campaign.v1.GetCampaignResponse\"\x00B/Z-github.com/coxwave/gen/campaign/v1;campaignv1b\x06proto3"
+	"\vGetCampaign\x12%.proto.campaign.v1.GetCampaignRequest\x1a&.proto.campaign.v1.GetCampaignResponse\"\x00BCZAgithub.com/coxwave/coupon-system/gen/proto/campaign/v1;campaignv1b\x06proto3"
 
 var (
 	file_proto_campaign_v1_campaign_proto_rawDescOnce sync.Once
