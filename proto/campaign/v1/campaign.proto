@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package proto.campaign.v1;
+
+option go_package = "github.com/coxwave/gen/campaign/v1;campaignv1";
+
+import "google/protobuf/timestamp.proto";
+
+
+// 캠페인 정보
+message Campaign {
+  uint32 id = 1;                                // 캠페인 ID (gorm.Model의 ID는 uint32)
+  string name = 2;                              // 캠페인 이름
+  int32 coupon_quantity = 3;                    // 총 쿠폰 수량
+  google.protobuf.Timestamp issue_start_at = 4; // 쿠폰 발급 시작 시간
+  google.protobuf.Timestamp created_at = 5;     // 생성 시간
+  google.protobuf.Timestamp updated_at = 6;     // 수정 시간
+}
+
+// 캠페인 생성 요청
+message CreateCampaignRequest {
+  string name = 1;                              // 캠페인 이름
+  int32 coupon_quantity = 2;                    // 발급 가능한 쿠폰 수량
+  google.protobuf.Timestamp issue_start_at = 3; // 쿠폰 발급 시작 시간
+}
+
+// 캠페인 생성 응답
+message CreateCampaignResponse {
+  Campaign campaign = 1;                        // 생성된 캠페인 정보
+}
+
+// 캠페인 조회 요청
+message GetCampaignRequest {
+  string campaign_id = 1;                       // 캠페인 ID
+}
+
+// 캠페인 조회 응답
+message GetCampaignResponse {
+  Campaign campaign = 1;                        // 캠페인 정보
+  repeated string coupon_codes = 2;             // 발급된 쿠폰 코드 목록
+}
+
+// 캠페인 서비스
+service CampaignService {
+  // 캠페인 생성
+  rpc CreateCampaign(CreateCampaignRequest) returns (CreateCampaignResponse) {}
+  
+  // 캠페인 조회
+  rpc GetCampaign(GetCampaignRequest) returns (GetCampaignResponse) {}
+} 
