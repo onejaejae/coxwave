@@ -11,4 +11,5 @@ type Campaign struct {
 	Name           string    `gorm:"type:varchar(255);not null"`
 	CouponQuantity int       `gorm:"not null"`
 	IssueStartAt   time.Time `gorm:"not null"`
+	Coupons        []Coupon  `gorm:"foreignKey:CampaignID"`
 }
