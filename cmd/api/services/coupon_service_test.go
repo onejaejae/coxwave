@@ -1,4 +1,3 @@
-// cmd/api/services/coupon_service_test.go
 package services
 
 import (
