@@ -30,10 +30,6 @@ func NewMySQL() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	if err := db.Exec("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED").Error; err != nil {
-		return nil, err
-	}
-
 	log.Default().Println("Database connected!!")
 	return db, nil
 }
